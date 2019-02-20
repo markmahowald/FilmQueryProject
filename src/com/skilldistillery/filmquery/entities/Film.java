@@ -7,10 +7,10 @@ public class Film {
 	private int id, releaseYear, rentalDuration;
 	private double rate, length, replacementCost;
 	private String title, description, language, rating, specialFeatures;
-	private ArrayList<String> cast = new ArrayList<>();
-	
+	private ArrayList<Actor> cast = new ArrayList<>();
+
 //	Constructors
-public Film(int id, int releaseYear, int rentalDuration, double rate, double length, double replacementCost,
+	public Film(int id, int releaseYear, int rentalDuration, double rate, double length, double replacementCost,
 			String title, String description, String language, String rating, String specialFeatures) {
 		super();
 		this.id = id;
@@ -24,100 +24,121 @@ public Film(int id, int releaseYear, int rentalDuration, double rate, double len
 		this.language = language;
 		this.rating = rating;
 		this.specialFeatures = specialFeatures;
-		this.cast = cast;
 	}
-public Film() {
-	super();
-	this.id = 0;
-	this.releaseYear = 0;
-	this.rentalDuration = 0;
-	this.rate = 0.0;
-	this.length = 0.0;
-	this.replacementCost = 0.0;
-	this.title = null;
-	this.description = null;
-	this.language = null;
-	this.rating = null;
-	this.specialFeatures = null;
-	this.cast = null;
-}
-	
+
+	public Film() {
+		super();
+		this.id = 0;
+		this.releaseYear = 0;
+		this.rentalDuration = 0;
+		this.rate = 0.0;
+		this.length = 0.0;
+		this.replacementCost = 0.0;
+		this.title = null;
+		this.description = null;
+		this.language = null;
+		this.rating = null;
+		this.specialFeatures = null;
+		this.cast = null;
+	}
 
 //	getters & setters
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public int getReleaseYear() {
 		return releaseYear;
 	}
+
 	public void setReleaseYear(int releaseYear) {
 		this.releaseYear = releaseYear;
 	}
+
 	public int getRentalDuration() {
 		return rentalDuration;
 	}
+
 	public void setRentalDuration(int rentalDuration) {
 		this.rentalDuration = rentalDuration;
 	}
+
 	public double getRate() {
 		return rate;
 	}
+
 	public void setRate(double rate) {
 		this.rate = rate;
 	}
+
 	public double getLength() {
 		return length;
 	}
+
 	public void setLength(double length) {
 		this.length = length;
 	}
+
 	public double getReplacementCost() {
 		return replacementCost;
 	}
+
 	public void setReplacementCost(double replacementCost) {
 		this.replacementCost = replacementCost;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public String getLanguage() {
 		return language;
 	}
+
 	public void setLanguage(String language) {
 		this.language = language;
 	}
+
 	public String getRating() {
 		return rating;
 	}
+
 	public void setRating(String rating) {
 		this.rating = rating;
 	}
+
 	public String getSpecialFeatures() {
 		return specialFeatures;
 	}
+
 	public void setSpecialFeatures(String specialFeatures) {
 		this.specialFeatures = specialFeatures;
 	}
-	public ArrayList<String> getCast() {
+
+	public ArrayList<Actor> getCast() {
 		return cast;
 	}
-	public void setCast(ArrayList<String> cast) {
+
+	public void setCast(ArrayList<Actor> cast) {
 		this.cast = cast;
 	}
-	
-	
+
 //	# & Equals
 	@Override
 	public int hashCode() {
@@ -141,6 +162,7 @@ public Film() {
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -194,9 +216,16 @@ public Film() {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
-		return "ID: " + id + ". title=" + title + ", rated" + rating+ " was released in " + releaseYear + ". \nIts description reads: " + description + ", rental period: " + rentalDuration + "days.";
+		String castList = "";
+		for (int i = 0; i < cast.size(); i++) {
+			castList+=(this.cast.get(i).getFirstName() + " " + this.cast.get(i).getLastName()+", ");
+		}
+		return "Film ID " + id + ", title " + title + ", rated " + rating + " was released in " + releaseYear
+				+ ". \nIts description reads: " + description + ", language: " + language + "\nStaring: "+castList;
+
 	}
-	
+
 }
